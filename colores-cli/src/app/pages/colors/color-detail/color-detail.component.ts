@@ -25,8 +25,8 @@ export class ColorDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Hacemos una copia profunda del objeto para que en la interfaz no se vean reflejados los cambios al escribir
-    // en el formulario.
+    // Hacemos una copia profunda del objeto para que en la interfaz de la lista no se vean reflejados los cambios
+    // al escribir en el formulario.
     if (this.color.id) {
       this.color = JSON.parse(JSON.stringify(this.color));
     }
@@ -45,6 +45,7 @@ export class ColorDetailComponent implements OnInit {
     });
   }
 
+  // Esta funcion la hice solo para hacer un poco mas dinamico el formulario y que vaya actualizando el widget de color
   onKeyDown(e: any, input: 'name' | 'color' | 'pantone' | 'period') {
     let value = e.target.value;
 

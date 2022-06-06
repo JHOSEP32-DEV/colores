@@ -7,11 +7,7 @@ import com.jhosep32dev.coloresapi.service.ColorsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.security.RolesAllowed;
-import java.util.List;
 
 @Component
 public class ColorsServiceImpl implements ColorsService {

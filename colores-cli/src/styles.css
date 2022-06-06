@@ -10,6 +10,8 @@ body {
   cursor: pointer;
 }
 
+/*Widget de color*/
+
 .color-item {
   position: relative;
   color: white;

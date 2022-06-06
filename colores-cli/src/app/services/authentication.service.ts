@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {SessionService} from "./session.service";
-import {BehaviorSubject, Observable, throwError} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {User} from "../model/User";
 import {environment} from "../../environments/environment";
-import {map} from "rxjs/operators";
 import {SessionData} from "../model/SessionData";
 import {HttpService} from "./http.service";
 

@@ -2,7 +2,6 @@ package com.jhosep32dev.coloresapi.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.UUID;
 
 @Entity
 @Table(name = "colors")

@@ -3,8 +3,6 @@ package com.jhosep32dev.coloresapi.service;
 import com.jhosep32dev.coloresapi.model.Color;
 import com.jhosep32dev.coloresapi.model.PaginationDTO;
 
-import java.util.List;
-
 public interface ColorsService {
 
     PaginationDTO<Color> getAllColors(Integer page);

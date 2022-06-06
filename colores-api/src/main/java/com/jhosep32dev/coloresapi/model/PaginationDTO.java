@@ -1,7 +1,6 @@
 package com.jhosep32dev.coloresapi.model;
 
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 

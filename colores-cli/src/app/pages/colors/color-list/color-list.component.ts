@@ -39,7 +39,7 @@ export class ColorListComponent implements OnInit {
       this.colorsDTO = res;
       this.loading = false;
     }, err => {
-      console.log('Error', err);
+      AlertService.showServerErrorAlert(err);
       this.loading = false;
     });
   }
@@ -50,7 +50,6 @@ export class ColorListComponent implements OnInit {
     const modalRef = this.modalService.open(ColorDetailComponent);
 
     modalRef.result.then(res => {
-      console.log(res);
       // Actualizamos en la pagina actual por si estamos en la ultima.
       this.paginateColors(this.colorsDTO.pageNumber);
     }).catch(err => {
@@ -67,16 +66,16 @@ export class ColorListComponent implements OnInit {
     }
 
     // Consultamos en color en la API
-    this.colorsService.getColor(color.id!).subscribe(res => {
+    this.colorsService.getColor(color.id!).subscribe(serverColor => {
       const modalRef = this.modalService.open(ColorDetailComponent);
-      modalRef.componentInstance.color = color;
+      modalRef.componentInstance.color = serverColor;
 
       modalRef.result.then(res => {
         console.log(res);
         let oldColorIdx = this.colorsDTO.content.findIndex(c => c.id == color.id);
         switch (res.action) {
           case 'update':
-            this.colorsDTO.content[oldColorIdx] = res;
+            this.colorsDTO.content[oldColorIdx] = res.content;
             break;
           case 'delete':
             this.paginateColors(this.colorsDTO.pageNumber);

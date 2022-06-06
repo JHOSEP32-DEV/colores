@@ -38,14 +38,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private JWTRequestFilter jwtRequestFilter;
 
-//    @Autowired
-//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        // configure AuthenticationManager so that it knows from where to load
-//        // user for matching credentials
-//        // Use BCryptPasswordEncoder
-//        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-//    }
-
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider() {
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
@@ -94,6 +86,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.addAllowedHeader("*");
         configuration.addAllowedOrigin("http://localhost:4200");
+        configuration.addAllowedOrigin("http://localhost:8081");
+        configuration.addAllowedOrigin("http://localhost");
         configuration.addAllowedMethod("*");
         configuration.setAllowCredentials(false);
 

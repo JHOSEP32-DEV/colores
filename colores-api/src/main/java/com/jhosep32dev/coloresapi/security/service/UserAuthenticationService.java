@@ -5,7 +5,6 @@ import com.jhosep32dev.coloresapi.security.model.JWTRequest;
 import com.jhosep32dev.coloresapi.security.model.JWTResponse;
 
 public interface UserAuthenticationService {
-
     JWTResponse authenticate(JWTRequest authenticationRequest);
 
     User getCurrentUser();
