@@ -39,8 +39,8 @@ export class SessionService {
 
     const json = JSON.parse(lsData);
 
-    // Debido a lo estricto que esta angular 12 debo hacer esto manualmente, normalmente deberia bastar con el JSON.parse(lsData)
-    return new SessionData(new User(json._user.id, json._user.name, json._user.username), json._token);
+    // Debido a lo estricto que esta angular debo hacer esto manualmente, normalmente deberia bastar con el JSON.parse(lsData)
+    return new SessionData(new User(json._user.id, json._user.name, json._user.username, json._user.roles), json._token);
   }
 
   clearSessionData() {

@@ -30,6 +30,13 @@ export class AuthenticationService {
     this.currentUser$ = this.currentUserSubject.asObservable();
   }
 
+  userHasRole(roles: string[]): boolean {
+    let currentUserRoles = this.currentUser?.roles;
+    return roles.every(role => {
+      return currentUserRoles?.map(r => r.name).includes(role);
+    });
+  }
+
   isLoggedIn(): boolean {
     return this.sessionService.isLoggedIn();
   }

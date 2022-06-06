@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {SessionService} from "./session.service";
 import {environment} from "../../environments/environment";
 import {throwError} from "rxjs";
+import {catchError} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -28,30 +29,38 @@ export class HttpService {
       // y por cuestiones de tiempo.
       // De lo contrario este tipo de casos deberia manejarse en un HttpInterceptor
       if (error.status === 401 && !error.url.includes('login')) {
+        // Aqui necesitamos borrar la sesion y mandar al login
+        localStorage.clear();
         window.location.href = '/login'; // No se usa el router de angular porque la funcion es estatica
       }
     }
     console.log('HTTP ERROR: ', error, errorMessage);
 
-    return throwError(errorMessage);
+    return throwError(error);
   }
 
   createGet<T>(url: string) {
     return this.httpClient.get<T>(environment.apiUrl + url, {
       headers: this.getHeaders()
-    });
+    }).pipe(catchError(HttpService.handleError));
   }
 
   createPost<T>(url: string, data: any) {
     return this.httpClient.post<T>(environment.apiUrl + url, data, {
       headers: this.getHeaders()
-    });
+    }).pipe(catchError(HttpService.handleError));
+  }
+
+  createPut<T>(url: string, data: any) {
+    return this.httpClient.put<T>(environment.apiUrl + url, data, {
+      headers: this.getHeaders()
+    }).pipe(catchError(HttpService.handleError));
   }
 
   createDelete<T>(url: string) {
     return this.httpClient.delete<T>(environment.apiUrl + url, {
       headers: this.getHeaders()
-    });
+    }).pipe(catchError(HttpService.handleError));
   }
 
   private getHeaders(): HttpHeaders {

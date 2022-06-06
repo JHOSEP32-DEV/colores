@@ -24,6 +24,11 @@ export class AlertService {
     });
   }
 
+  public static showServerErrorAlert(error: any, errorTitle?: string | 'Error occurred'): Promise<SweetAlertResult> {
+    console.log(error);
+    return this.showAlert(errorTitle, error.error.details[0], "error");
+  }
+
   public static showConfirm(title = '',
                             text = '',
                             promise?: Observable<any>,
