@@ -5,3 +5,39 @@ html,
 body {
   height: 100%;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.color-item {
+  position: relative;
+  color: white;
+  padding: 15px;
+  margin: 5px;
+  border: solid 1px;
+  border-radius: 5px;
+  text-shadow: 1px 1px 0 rgb(0 0 0 / 50%);
+  box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
+}
+
+.color-item .color-period {
+  display: flex;
+  justify-content: left;
+}
+
+.color-item .color-name {
+  display: flex;
+  justify-content: center;
+}
+
+.color-item .color-hex {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.color-item .color-pantone {
+  display: flex;
+  justify-content: right;
+}
