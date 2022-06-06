@@ -1,0 +1,27 @@
+<p class="lead text-center" *ngIf="!colorsDTO.content.length">Currently you don't have colors :C</p>
+<a class="btn btn-dark m-auto d-table" *appAllowedRoles="['ADMIN']" (click)="createColor($event)">Create color</a>
+<div class="color-container container">
+  <div class="row row-cols-sm-1 row-cols-md-3">
+    <div *ngFor="let color of colorsDTO.content" (click)="colorDetail($event, color)" class="col cursor-pointer">
+      <div class="color-item" [style.background-color]="color.color">
+        <span class="color-period">
+          {{ color.period }}
+        </span>
+        <span class="color-name">
+          {{ color.name }}
+        </span>
+        <span class="color-hex">
+          {{ color.color }}
+        </span>
+        <span class="color-pantone">
+          {{ color.pantone }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="color-paginator container d-flex justify-content-between">
+  <button [disabled]="loading || colorsDTO.first" (click)="previousPage($event)" class="btn btn-primary">Previous</button>
+  <span class="d-flex align-items-center">Page {{ colorsDTO.pageNumber + 1 }} of {{ colorsDTO.totalPages }}</span>
+  <button [disabled]="loading || colorsDTO.last" (click)="nextPage($event)" class="btn btn-primary">Next</button>
+</div>

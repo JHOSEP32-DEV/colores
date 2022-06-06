@@ -1,0 +1,55 @@
+<div *ngIf="color">
+  <form [formGroup]="colorForm" (submit)="onSubmit()" class="mt-2">
+    <div class="modal-header">
+      <h4 class="modal-title">Color detail</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <div class="col">
+        <div class="color-item" [style.background-color]="color.color || '#f8f9fa'">
+        <span class="color-period">
+          {{ color.period || '---' }}
+        </span>
+          <span class="color-name">
+          {{ color.name || '---' }}
+        </span>
+          <span class="color-hex">
+          {{ color.color || '---' }}
+        </span>
+          <span class="color-pantone">
+          {{ color.pantone || '---' }}
+        </span>
+        </div>
+      </div>
+      <div class="mt-2">
+        <div class="form-floating mb-2">
+          <input (keyup)="onKeyDown($event, 'name')" type="text" class="form-control" id="name" placeholder="Name"
+                 formControlName="name">
+          <label for="name">Name</label>
+        </div>
+        <div class="form-floating mb-2">
+          <input (keyup)="onKeyDown($event, 'color')" type="text" class="form-control" id="color"
+                 placeholder="Color" formControlName="color">
+          <label for="color">Color</label>
+        </div>
+        <div class="form-floating mb-2">
+          <input (keyup)="onKeyDown($event, 'pantone')" type="text" class="form-control" id="pantone"
+                 placeholder="Pantone" formControlName="pantone">
+          <label for="pantone">Pantone</label>
+        </div>
+        <div class="form-floating">
+          <input (keyup)="onKeyDown($event, 'period')" type="text" class="form-control" id="period"
+                 placeholder="Period" formControlName="period">
+          <label for="period">Period</label>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button (click)="activeModal.dismiss('Close click')" type="button" class="btn btn-outline-dark">Close</button>
+      <div *appAllowedRoles="['ADMIN']">
+        <button (click)="deleteColor($event)" *ngIf="!isCreating" type="button" class="btn btn-danger">Delete</button>
+      </div>
+      <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+  </form>
+</div>
