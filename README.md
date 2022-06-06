@@ -310,4 +310,6 @@ En el WebSecurityConfig quedaron los host permitidos en la configuracion de CORS
 asimismo las rutas restringidas para los diferentes roles segun el requerimiento.
 
 Cabe resaltar que suelo programar en ingles así que las tablas, variables y todo el
-código está en inglés, espero no sea un problema.
+código está en inglés, espero no sea un problema.  
+
+Lo unico que me falto fue especificar que en el servicio de obtener colores permitiera devolver con xml, por falta de tiempo.
